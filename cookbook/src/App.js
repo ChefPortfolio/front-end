@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import PostPage from './components/PostPage';
+import SignUp from './components/SignUp';
+
 
 function App() {
   return (
     <div className="App">
-    <h1>Testing!</h1>
 
-    <PostPage />
+    <SignUp />
+
     </div>
   );
 }
