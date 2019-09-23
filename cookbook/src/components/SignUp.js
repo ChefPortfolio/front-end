@@ -12,13 +12,17 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import BlueEmblem from './BlueEmblem.js'
+import styled from 'styled-components';
+import SvgIcon from '@material-ui/core/SvgIcon'
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        CookBook
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,26 +33,33 @@ function Copyright() {
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
-      backgroundColor: theme.palette.common.white,
-    },
+      backgroundColor: theme.palette.common.white
+    }
   },
+  palette: {
+    primary: '#141c26',
+    secondary: '#D96704'
+  },
+
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+    outlineColor: '#141C26'
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
+    backgroundColor: '#D96704'
+  }
 }));
 
 export default function SignUp() {
@@ -58,9 +69,9 @@ export default function SignUp() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <div>
+          <BlueEmblem />
+        </div>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -115,7 +126,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label="Send me recipes and updates via email."
               />
             </Grid>
           </Grid>
