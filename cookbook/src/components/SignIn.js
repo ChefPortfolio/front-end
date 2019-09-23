@@ -32,6 +32,17 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.common.white,
     },
   },
+  outlinedRoot: {
+    '&:hover $notchedOutline': {
+      borderColor: 'red',
+    },
+    '&$focused $notchedOutline': {
+      borderColor: 'green',
+      borderWidth: 1,
+    },
+  },
+  notchedOutline: {},
+  focused: {},
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
