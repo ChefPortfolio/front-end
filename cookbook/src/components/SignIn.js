@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import OrangeEmblem from './OrangeEmblem';
 
 function Copyright() {
   return (
@@ -59,6 +60,10 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: `#141c26`,
+    '&:hover': {
+        backgroundColor: '#D96704'
+    }
   },
 }));
 
@@ -69,9 +74,9 @@ export default function SignIn() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <div>
+          <OrangeEmblem />
+        </div>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -113,12 +118,12 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" style={{color: '#141C26'}}>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" style={{color: '#141C26'}}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

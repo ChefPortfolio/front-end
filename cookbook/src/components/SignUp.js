@@ -11,29 +11,22 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import BlueEmblem from './BlueEmblem.js'
+import styled from 'styled-components';
+import SvgIcon from '@material-ui/core/SvgIcon'
+import { createMuiTheme } from '@material-ui/core/styles'
 
-import PropTypes from "prop-types";
+// const theme = createMuiTheme({
+//     palette: {
+//         primary: {
+//             main: '#141c26',
+//         },
+//         secondary: {
+//             main: '#D96704',
+//         },
+//       },
+// })
 
-const styles = theme => ({
-  notchedOutline: {},
-  focused: {
-    "& $notchedOutline": {
-      borderColor: "yellow"
-    }
-  }
-});
-
-class OutlinedTextFields extends React.Component {
-  state = {
-    name: "Cat in the Hat"
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value
-    });
-  };
-};
+// const primary = ['#141C26']
 
 
 function Copyright() {
@@ -55,10 +48,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.common.white
     }
   },
-  palette: {
-    primary: '#141c26',
-    secondary: '#D96704'
-  },
+  
 
   paper: {
     marginTop: theme.spacing(8),
@@ -73,11 +63,15 @@ const useStyles = makeStyles(theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
-    outlineColor: '#141C26'
+
+    
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#D96704'
+    backgroundColor: '#D96704',
+    '&:hover': {
+        backgroundColor: '#141c26'
+    }
   }
 }));
 
@@ -166,7 +160,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" style={{color: '#141C26'}}>
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -180,6 +174,3 @@ export default function SignUp() {
   );
 }
 
-OutlinedTextFields.propTypes = {
-  classes: PropTypes.object.isRequired
-};

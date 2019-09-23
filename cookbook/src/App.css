@@ -21,10 +21,16 @@
   color: #09d3ac;
 }
 
-.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-outlined.Mui-focused.Mui-required.Mui-required{
-  color: red;
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #141c26 !important;
 }
 
-.MuiButtonBase-root.MuiIconButton-root.PrivateSwitchBase-root-218.MuiCheckbox-root.MuiCheckbox-colorPrimary.PrivateSwitchBase-checked-219.Mui-checked.MuiIconButton-colorPrimary {
-  color: red;
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-outlined.Mui-focused.Mui-required.Mui-required {
+  color: #141c26;
 }
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: #141c26 !important;
+}
+
