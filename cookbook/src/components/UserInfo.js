@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
+export default function UserInfo() {
   const classes = useStyles();
 
   return (
@@ -74,37 +74,19 @@ export default function SignUp() {
           <BlueEmblem />
         </div>
         <Typography component="h1" variant="h5">
-          Sign up
+          Tell us a bit more...
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                InputProps={{
-                  classes: {
-                    outlined: classes.outlined,
-                    focused: classes.focused
-                  }
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id="username"
+                label="Create Username"
+                name="username"
+                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12}>
@@ -112,10 +94,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="location"
+                label="Location"
+                type="location"
+                id="location"
+                autoComplete="location"
               />
             </Grid>
             <Grid item xs={12}>
@@ -123,17 +106,16 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                id="linkedin"
+                label="LinkedIn"
+                name="linkedin"
+                autoComplete="linkedin"
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="Send me recipes and updates via email."
+                label="I agree to terms and conditions."
               />
             </Grid>
           </Grid>
