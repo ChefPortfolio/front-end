@@ -18,7 +18,7 @@ const PostPage = () => {
                 setPosts(res.data);
             })
             .catch(err => {
-                console.log('Error in GET POST api', err.response);
+                console.log('Error in GET post api', err.response);
             })
     }, [])
 
