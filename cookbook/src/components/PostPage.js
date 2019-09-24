@@ -1,3 +1,4 @@
+//* Alexis */
 import React, { useState, useEffect } from 'react';
 
 const PostPage = () => {
@@ -20,6 +21,7 @@ const PostPage = () => {
 
     return (
         <>
+            <h1>Welcome to your Post</h1>
             <form>
                 <div className="post-form">
                     <label>Title: </label>

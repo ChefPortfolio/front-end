@@ -1,5 +1,6 @@
+//* Alexis */
 export const initialState = {
-    post: [{
+    posts: [{
         title: '',
         description: '',
         instructions: '',
@@ -12,7 +13,7 @@ export const reducer = (state = initialState, action) => {
         case 'ADD_POST':
             return {
                 ...state,
-                post: action.payload
+                posts: action.payload
             }
 
         default:
