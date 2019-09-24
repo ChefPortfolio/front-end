@@ -1,11 +1,13 @@
 //* Alexis */
-import React, { useState, useReducer } from 'react';
-import { initialState } from './reducers/PostReducer';
+import React, { useState, useReducer, useEffect } from 'react';
+import { reducer, initialState } from './reducers/PostReducer';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import Post from './Post';
+
 
 const PostPage = () => {
     const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
-    const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
@@ -13,7 +15,7 @@ const PostPage = () => {
         axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes`)
             .then(res => {
                 console.log(res);
-                setPost(res.data);
+                setPosts(res.data);
             })
             .catch(err => {
                 console.log('Error in GET POST api', err.response);
@@ -32,7 +34,7 @@ const PostPage = () => {
                 console.log('POST request for addPost', res);
                 setNewPost(res.data);
 
-                dispatch({ type: 'ADD_POST', payload})
+                dispatch({ type: 'ADD_POST', payload: res.data})
             })
             .catch(err => {
                 console.log('Error in POST request for addPost', err.response)
@@ -53,7 +55,7 @@ const PostPage = () => {
                         type="text"
                         name="title"
                         placeholder="Add a title"
-                        value={post.title} required
+                        value={posts.title} required
                         onChange={handleChanges}
                     />
                 </div>
@@ -65,7 +67,7 @@ const PostPage = () => {
                         type="text"
                         name="description"
                         placeholder="Add a description"
-                        value={post.description} required
+                        value={posts.description} required
                         onChange={handleChanges}
                     />
                 </div>
@@ -77,7 +79,7 @@ const PostPage = () => {
                         type="text"
                         name="instructions"
                         placeholder="Add instructions"
-                        value={post.instructions} required
+                        value={posts.instructions} required
                         onChange={handleChanges}
                     />
                 </div>
@@ -89,7 +91,7 @@ const PostPage = () => {
                         type= "text"
                         name= "meal_type"
                         onChange= {handleChanges}
-                        value={post.meal_type} required>
+                        value={posts.meal_type} required>
                             <option value="">Select Category</option>
                             <option value="Breakfast">Breakfast</option>
                             <option value="Lunch">Lunch</option>
@@ -99,6 +101,10 @@ const PostPage = () => {
 
                 <button onClick={addPost} className="add-post-btn">Add Post</button>
             </form>
+
+            {posts.map(post => (
+            <Post post={post} />
+        ))}
         </>
     );
 };

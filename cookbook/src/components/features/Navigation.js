@@ -9,6 +9,8 @@ import {Route} from "react-router-dom";
 import NavLogo from '../logos/NavLogo';
 import {Link} from 'react-router-dom';
 
+import PostPage from '../crud/PostPage';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,6 +37,7 @@ export default function Navigation() {
             <menuButton>
                 <Link to="" color="inherit">Sign In</Link>
                 <Link to="" color="inherit">Sign Up</Link>
+                <Link to='/postpage'>Post Page</Link>
             </menuButton>
           </Toolbar>
         </AppBar>

@@ -47,7 +47,12 @@ const EditPost = ({posts, updatePosts}) => {
     const deletePost = post => {
         //This is where the DELETE request to delete your post
         axiosWithAuth().delete(`https://lambdacooks.herokuapp.com/api/recipes/:id`)
-
+            .then(res => {
+                updatePosts(posts.filter(pos => res.data !==pos.id))
+            })
+            .catch(err => {
+                console.log('Error in DELETE', err.response)
+            });
     };
 
     return (
