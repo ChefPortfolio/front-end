@@ -1,20 +1,15 @@
 import React from 'react';
 import './App.css';
 
-import SignUp from './components/features/SignUp';
-import SignIn from './components/features/SignIn';
-import UserInfo from "./components/features/UserInfo";
-
+import MainFeed from "./components/features/MainFeed";
 
 
 function App() {
   return (
     <div className="App">
 
-
-    <SignUp />
-    <UserInfo />
-    <SignIn />
+    {/* <p>SignIn-SignUp-UserInfo is in MainFeed.js</p> */}
+    <MainFeed />
 
     </div>
   );
