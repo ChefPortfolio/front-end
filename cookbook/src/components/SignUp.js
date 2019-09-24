@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import BlueEmblem from './BlueEmblem.js'
-import styled from 'styled-components';
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { createMuiTheme } from '@material-ui/core/styles'
 
