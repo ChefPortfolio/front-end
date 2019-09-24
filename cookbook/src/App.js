@@ -1,14 +1,20 @@
 import React from 'react';
 import './App.css';
-// import SignUp from './components/SignUp';
-import PostPage from './components/PostPage';
+
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+import UserInfo from "./components/UserInfo";
+
 
 
 function App() {
   return (
     <div className="App">
-    {/* <SignUp /> */}
-    <PostPage />
+
+
+    <SignUp />
+    <UserInfo />
+    <SignIn />
 
     </div>
   );
