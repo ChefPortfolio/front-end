@@ -13,22 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import BlueEmblem from './BlueEmblem.js'
-import styled from 'styled-components';
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { createMuiTheme } from '@material-ui/core/styles'
-
-// const theme = createMuiTheme({
-//     palette: {
-//         primary: {
-//             main: '#141c26',
-//         },
-//         secondary: {
-//             main: '#D96704',
-//         },
-//       },
-// })
-
-// const primary = ['#141C26']
 
 
 function Copyright() {
