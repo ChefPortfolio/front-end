@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -62,7 +62,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
+const SignUp = props => {
+
+    const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '' });
+
+    const handleChanges = e => {
+        console.log(newUser);
+        setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    };
+
+    // const submitForm = e => {
+    //     e.preventDefault();
+    //     axios
+    //     .post(postrequest, user)
+    //     .then(res => {
+    //         console.log(res)
+    //         localStorage.setItem(token, res.data.payload);
+    //         props.history.push('/Profile');
+    //     })
+    //     .catch(err => {
+    //         console.log(err.response);
+    //     })
+    //     setNewUser('');
+    //   };
+
   const classes = useStyles();
 
   return (
@@ -161,3 +184,4 @@ export default function SignUp() {
   );
 }
 
+export default SignUp;
