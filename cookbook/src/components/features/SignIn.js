@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import OrangeEmblem from '../logos/OrangeEmblem';
+import {axiosWithAuth} from "../crud/utils/axiosWithAuth"
 
 function Copyright() {
   return (
@@ -67,8 +68,34 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+
+const SignIn= props => {
   const classes = useStyles();
+
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChanges = e => {
+    console.log(user);
+    setUser({...user, [e.target.name]: e.target.value });
+  };
+
+  const submitForm = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post('https://lambdacooks.herokuapp.com/api/auth/login', user)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/Profile');
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+    setUser('');
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -113,6 +140,8 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onChange={handleChanges}
+            onClick={submitForm}
           >
             Sign In
           </Button>
@@ -136,3 +165,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default SignIn;
