@@ -14,6 +14,7 @@ import BlueEmblem from '../logos/BlueEmblem.js';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
