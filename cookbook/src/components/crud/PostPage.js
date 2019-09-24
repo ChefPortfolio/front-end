@@ -1,14 +1,24 @@
 //* Alexis */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useReducer } from 'react';
+import { initialState } from './reducers/PostReducer';
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const PostPage = () => {
-    const [post, setPost] = useState([]);
-
     const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
+    const [post, setPost] = useState([]);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getPost = () => {
+    useEffect(() => {
         //* Get request for getting posts data goes HERE */
-    }
+        // axiosWithAuth().get(``)
+        //     .then(res => {
+        //         console.log(res);
+        //         setNewPost(res.data);
+        //     })
+        //     .catch(err => {
+        //         console.log('Error in GET POST api', err.response);
+        //     })
+    }, [])
 
     const handleChanges = e => {
         setNewPost({...newPost, [e.target.name]: e.target.value});
@@ -17,6 +27,16 @@ const PostPage = () => {
     const addPost = e => {
         e.preventDefault();
         //* POST request for adding a post goes HERE */
+        axiosWithAuth().post(``, newPost)
+            .then(res => {
+                console.log('POST request for addPost', res);
+                setNewPost(res.data);
+            })
+            .catch(err => {
+                console.log('Error in POST request for addPost', err.response)
+            });
+        
+
     }
 
     return (
