@@ -6,11 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import {Route} from "react-router-dom";
+import NavLogo from '../logos/NavLogo';
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    justify: 'space-between',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -28,8 +31,11 @@ export default function Navigation() {
         <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button color="inherit">Sign In</Button>
-            <Button color="inherit">Sign Up</Button>
+            <NavLogo />
+            <menuButton>
+                <Link to="" color="inherit">Sign In</Link>
+                <Link to="" color="inherit">Sign Up</Link>
+            </menuButton>
           </Toolbar>
         </AppBar>
       </div>
