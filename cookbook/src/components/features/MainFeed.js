@@ -1,14 +1,13 @@
 import React from "react";
-import {Route} from "react-router-dom";
 
-import SignUp from './components/features/SignUp';
-import SignIn from './components/features/SignIn';
+import Navigation from "./Navigation";
+
+
 
 export default function MainFeed(){
     return(
         <div className="MainFeedWrapper">
-            <SignUp />
-            <SignIn />
+            <Navigation />
         </div>
     )
 }
