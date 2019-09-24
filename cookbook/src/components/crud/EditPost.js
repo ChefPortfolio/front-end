@@ -1,5 +1,6 @@
 //* Alexis */
 import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const initialPost = {
     title: '',
@@ -27,10 +28,25 @@ const EditPost = ({posts, updatePosts}) => {
         e.preventDefault();
 
         //This is where the PUT request to save your updated post
+        axiosWithAuth().put(`https://lambdacooks.herokuapp.com/api/recipes/${postToEdit.id}`, postToEdit)
+            .then(res => {
+                console.log('savevEdit api', res);
+                updatePosts(posts.map(post => {
+                    if (res.data.id === post.id) {
+                        return res.data
+                    } else {
+                        return color
+                    }
+                }));
+            })
+            .catch(err => {
+                console.log('Error in saveEdit api', err.response);
+            })
     };
 
     const deletePost = post => {
         //This is where the DELETE request to delete your post
+        axiosWithAuth().delete(`https://lambdacooks.herokuapp.com/api/recipes/:id`)
 
     };
 
