@@ -30,7 +30,6 @@ export default function Navigation() {
             <div className="menuButton">
                 <Link to="/sign-in" color="inherit">Sign In</Link>
                 <Link to="/sign-up" color="inherit">Sign Up</Link>
-
             </div>
           </Toolbar>
         </AppBar>
