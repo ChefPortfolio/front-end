@@ -10,11 +10,9 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import BlueEmblem from '../logos/BlueEmblem.js'
-import SvgIcon from '@material-ui/core/SvgIcon'
-import { createMuiTheme } from '@material-ui/core/styles'
-
-
+import BlueEmblem from '../logos/BlueEmblem.js';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 
 function Copyright() {
   return (
@@ -35,7 +33,6 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.common.white
     }
   },
-  
 
   paper: {
     marginTop: theme.spacing(8),
@@ -49,42 +46,44 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-
-    
+    marginTop: theme.spacing(3)
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: '#D96704',
     '&:hover': {
-        backgroundColor: '#141c26'
+      backgroundColor: '#141c26'
     }
   }
 }));
 
 const SignUp = props => {
+  const [newUser, setNewUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
 
-    const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const handleChanges = e => {
+    console.log(newUser);
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
 
-    const handleChanges = e => {
-        console.log(newUser);
-        setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    };
-
-    // const submitForm = e => {
-    //     e.preventDefault();
-    //     axios
-    //     .post(postrequest, user)
-    //     .then(res => {
-    //         console.log(res)
-    //         localStorage.setItem(token, res.data.payload);
-    //         props.history.push('/Profile');
-    //     })
-    //     .catch(err => {
-    //         console.log(err.response);
-    //     })
-    //     setNewUser('');
-    //   };
+  const submitForm = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post('https://lambdacooks.herokuapp.com/api/auth/register', newUser)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/Profile');
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+    setNewUser('');
+  };
 
   const classes = useStyles();
 
@@ -165,12 +164,14 @@ const SignUp = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onChange={handleChanges}
+            onClick={submitForm}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" style={{color: '#141C26'}}>
+              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -182,6 +183,6 @@ const SignUp = props => {
       </Box>
     </Container>
   );
-}
+};
 
 export default SignUp;

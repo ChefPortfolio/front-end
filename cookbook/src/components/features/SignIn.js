@@ -19,7 +19,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        CookBook
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -30,17 +30,17 @@ function Copyright() {
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
-      backgroundColor: theme.palette.common.white,
-    },
+      backgroundColor: theme.palette.common.white
+    }
   },
   outlinedRoot: {
     '&:hover $notchedOutline': {
-      borderColor: 'red',
+      borderColor: 'red'
     },
     '&$focused $notchedOutline': {
       borderColor: 'green',
-      borderWidth: 1,
-    },
+      borderWidth: 1
+    }
   },
   notchedOutline: {},
   focused: {},
@@ -48,23 +48,23 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(1)
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: `#141c26`,
     '&:hover': {
-        backgroundColor: '#D96704'
+      backgroundColor: '#D96704'
     }
-  },
+  }
 }));
 
 export default function SignIn() {
@@ -118,12 +118,12 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2" style={{color: '#141C26'}}>
+              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2" style={{color: '#141C26'}}>
+              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
