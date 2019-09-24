@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -10,7 +10,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import BlueEmblem from './BlueEmblem.js'
+import BlueEmblem from '../logos/BlueEmblem.js'
+import styled from 'styled-components';
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { createMuiTheme } from '@material-ui/core/styles'
 
@@ -62,30 +63,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignUp = props => {
-
-    const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '' });
-
-    const handleChanges = e => {
-        console.log(newUser);
-        setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    };
-
-    // const submitForm = e => {
-    //     e.preventDefault();
-    //     axios
-    //     .post(postrequest, user)
-    //     .then(res => {
-    //         console.log(res)
-    //         localStorage.setItem(token, res.data.payload);
-    //         props.history.push('/Profile');
-    //     })
-    //     .catch(err => {
-    //         console.log(err.response);
-    //     })
-    //     setNewUser('');
-    //   };
-
+export default function UserInfo() {
   const classes = useStyles();
 
   return (
@@ -96,37 +74,19 @@ const SignUp = props => {
           <BlueEmblem />
         </div>
         <Typography component="h1" variant="h5">
-          Sign up
+          Tell us a bit more...
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                InputProps={{
-                  classes: {
-                    outlined: classes.outlined,
-                    focused: classes.focused
-                  }
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id="username"
+                label="Create Username"
+                name="username"
+                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12}>
@@ -134,10 +94,11 @@ const SignUp = props => {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="location"
+                label="Location"
+                type="location"
+                id="location"
+                autoComplete="location"
               />
             </Grid>
             <Grid item xs={12}>
@@ -145,17 +106,16 @@ const SignUp = props => {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                id="linkedin"
+                label="LinkedIn"
+                name="linkedin"
+                autoComplete="linkedin"
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="Send me recipes and updates via email."
+                label="I agree to terms and conditions."
               />
             </Grid>
           </Grid>
@@ -184,4 +144,3 @@ const SignUp = props => {
   );
 }
 
-export default SignUp;

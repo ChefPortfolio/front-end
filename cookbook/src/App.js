@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import UserInfo from "./components/UserInfo";
+import SignUp from './components/features/SignUp';
+import SignIn from './components/features/SignIn';
+import UserInfo from "./components/features/UserInfo";
 
 
 
