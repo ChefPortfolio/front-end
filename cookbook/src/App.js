@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import MainFeed from "./components/features/MainFeed";
 
-import PostPage from './components/crud/PostPage';
+
+import MainFeed from "./components/features/MainFeed";
+import SignIn from "./components/features/SignIn";
+import SignUp from "./components/features/SignUp";
 
 
 function App() {
@@ -11,9 +13,9 @@ function App() {
     <Router>
       <div className="App">
     
-       <Route exact path='/' component={MainFeed} />
-       <Route path='/postpage' component={PostPage} />
-  
+      <Route exact path='/' component={MainFeed} />
+      <Route path="/sign-in" render={props => <SignIn {...props}/>} />
+      <Route path="/sign-up" render={props => <SignUp {...props}/>} /> 
       </div>
     </Router>
     
