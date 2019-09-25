@@ -2,13 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
-import {Route} from "react-router-dom";
 import NavLogo from '../logos/NavLogo';
-import {Link} from 'react-router-dom';
-
+import { Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,10 +27,10 @@ export default function Navigation() {
         <AppBar position="static">
           <Toolbar>
             <NavLogo />
-            <menuButton>
-                <Link to="" color="inherit">Sign In</Link>
-                <Link to="" color="inherit">Sign Up</Link>
-            </menuButton>
+            <div className="menuButton">
+                <Link to="/sign-in" color="inherit">Sign In</Link>
+                <Link to="/sign-up" color="inherit">Sign Up</Link>
+            </div>
           </Toolbar>
         </AppBar>
       </div>

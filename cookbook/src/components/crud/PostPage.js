@@ -1,5 +1,8 @@
 //* Alexis */
 import React, { useState, useReducer, useEffect } from 'react';
+import { reducer, initialState } from './reducers/PostReducer';
+import { axiosWithAuth } from './utils/axiosWithAuth';
+import Post from './Post';
 import { initialState } from './reducers/PostReducer';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { makeStyles } from '@material-ui/core/styles';
@@ -45,6 +48,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
+
+const PostPage = () => {
+    const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
+    const [posts, setPosts] = useState([]);
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+        // * Get request for getting posts data goes HERE */
+        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes`)
+            .then(res => {
+                console.log(res);
+                setPosts(res.data);
+            })
+            .catch(err => {
+                console.log('Error in GET post api', err.response);
+            })
+    }, [])
+
 const inputLabel = React.useRef(null);
 const [labelWidth, setLabelWidth] = React.useState(0);
 React.useEffect(() => {
@@ -54,6 +77,7 @@ React.useEffect(() => {
 const PostPage = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
 
   const [newPost, setNewPost] = useState({
     title: '',
@@ -76,15 +100,7 @@ const PostPage = () => {
         console.log('Error in GET POST api', err.response);
       });
   }, []);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  
   const handleChanges = e => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
   };
@@ -98,7 +114,7 @@ const PostPage = () => {
         console.log('POST request for addPost', res);
         setNewPost(res.data);
 
-        dispatch({ type: 'ADD_POST', payload });
+        dispatch({ type: 'ADD_POST', payload: res.data });
       })
       .catch(err => {
         console.log('Error in POST request for addPost', err.response);
@@ -187,6 +203,9 @@ const PostPage = () => {
           </Button>
         </form>
       </div>
+      {posts.map(post => (
+            <Post post={post} />
+        ))}
     </Container>
   );
 };
