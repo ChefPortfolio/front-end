@@ -56,7 +56,7 @@ const PostPage = () => {
 
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
-        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes`)
+        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes/`)
             .then(res => {
                 console.log(res);
                 setPosts(res.data);
@@ -86,18 +86,7 @@ const PostPage = () => {
 //   const [post, setPost] = useState([]);
 //   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    // * Get request for getting posts data goes HERE */
-    axiosWithAuth()
-      .get(`https://lambdacooks.herokuapp.com/api/recipes`)
-      .then(res => {
-        console.log(res);
-        setPost(res.data);
-      })
-      .catch(err => {
-        console.log('Error in GET POST api', err.response);
-      });
-  }, []);
+  
   
   const handleChanges = e => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
