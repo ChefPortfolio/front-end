@@ -1,7 +1,28 @@
 import React from "react";
 import RecipeCard from '../crud/RecipeCard'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Navigation from "./Navigation";
+
+import Navigation from "./Navigation"
+
+const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+      border: '1px solid red',
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+    gridItem: {
+        // width: '33%'
+    },
+
+  }));
+
+
 
 const DummyData = [
     {
@@ -28,21 +49,25 @@ const DummyData = [
   ]
 
 export default function MainFeed(){
-
+    const classes = useStyles();
     return(
-        <div className="MainFeedWrapper">
+        <div>
             <Navigation />
-            {DummyData.map(recipe => {
-                return (
-                    <RecipeCard key={recipe.id}
-                    title={recipe.title}
-                    subheader={recipe.meal_type}
-                    image={recipe.pic_url}
-                    description={recipe.description}
-                    instructions={recipe.instructions}
-                    />
-                )
-            })}
+            <Grid container className={classes.root} justify='center' spacing={6}>
+                {DummyData.map(recipe => {
+                    return (
+                        <Grid item className={classes.gridItem}>
+                        <RecipeCard key={recipe.id}
+                        title={recipe.title}
+                        subheader={recipe.meal_type}
+                        image={recipe.pic_url}
+                        description={recipe.description}
+                        instructions={recipe.instructions}
+                        />
+                        </Grid>
+                    )
+                })}
+            </Grid>
         </div>
     )
 }
