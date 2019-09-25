@@ -59,9 +59,10 @@ const useStyles = makeStyles(theme => ({
 
 const SignUp = props => {
   const [newUser, setNewUser] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    first_name: '',
+    last_name: '',
+    username: '',
+    email_address: '',
     password: ''
   });
 
@@ -77,7 +78,7 @@ const SignUp = props => {
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.payload);
-        props.history.push('/Profile');
+        props.history.push('/sign-in');
       })
       .catch(err => {
         console.log(err.response);
@@ -102,13 +103,14 @@ const SignUp = props => {
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="first_name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="first_name"
+                label="first_name"
                 autoFocus
+                onChange={handleChanges}
                 InputProps={{
                   classes: {
                     outlined: classes.outlined,
@@ -122,10 +124,23 @@ const SignUp = props => {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
+                id="last_name"
+                label="last_name"
+                name="last_name"
                 autoComplete="lname"
+                onChange={handleChanges}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="username"
+                label="username"
+                name="username"
+                autoComplete="username"
+                onChange={handleChanges}
               />
             </Grid>
             <Grid item xs={12}>
@@ -135,8 +150,9 @@ const SignUp = props => {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
+                name="email_address"
                 autoComplete="email"
+                onChange={handleChanges}
               />
             </Grid>
             <Grid item xs={12}>
@@ -149,6 +165,7 @@ const SignUp = props => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChanges}
               />
             </Grid>
             <Grid item xs={12}>
@@ -164,7 +181,6 @@ const SignUp = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onChange={handleChanges}
             onClick={submitForm}
           >
             Sign Up
