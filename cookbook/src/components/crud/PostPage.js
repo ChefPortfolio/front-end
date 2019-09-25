@@ -1,8 +1,5 @@
 //* Alexis */
 import React, { useState, useReducer, useEffect } from 'react';
-import { } from './contexts/PostContext';
-import { axiosWithAuth } from './utils/axiosWithAuth';
-import Post from './PostCard';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -56,7 +53,7 @@ const PostPage = () => {
 
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
-        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes`)
+        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes/`)
             .then(res => {
                 console.log(res);
                 setPosts(res.data);
@@ -72,9 +69,9 @@ const PostPage = () => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-// const PostPage = () => {
-//   const classes = useStyles();
-//   const [open, setOpen] = React.useState(false);
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
 
 //   const [newPost, setNewPost] = useState({
@@ -86,18 +83,7 @@ const PostPage = () => {
 //   const [post, setPost] = useState([]);
 //   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    // * Get request for getting posts data goes HERE */
-    axiosWithAuth()
-      .get(`https://lambdacooks.herokuapp.com/api/recipes`)
-      .then(res => {
-        console.log(res);
-        setPost(res.data);
-      })
-      .catch(err => {
-        console.log('Error in GET POST api', err.response);
-      });
-  }, []);
+  
   
   const handleChanges = e => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
@@ -112,14 +98,12 @@ const PostPage = () => {
         console.log('POST request for addPost', res);
         setNewPost(res.data);
 
-        dispatch({ type: 'ADD_POST', payload: res.data });
       })
       .catch(err => {
         console.log('Error in POST request for addPost', err.response);
       });
     setNewPost('');
   };
-  console.log('State', state);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -204,12 +188,9 @@ const PostPage = () => {
           </Button>
         </form>
       </div>
-      {posts.map(post => (
-            <Post post={post} />
-        ))}
+      
     </Container>
   );
 };
-
 
 export default PostPage;
