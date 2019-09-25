@@ -1,38 +1,62 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogo from '../logos/NavLogo';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    justify: 'space-between',
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    background: 'rgb(220,220,220)',
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  textField: {
+    paddingBottom: '1.5rem',
+    width: '25rem',
+    marginLeft: '5rem',
   },
-  title: {
-    flexGrow: 1,
+  links: {
+    marginLeft: '40px',
+    width: '12rem',
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
+  btn: {
+    textDecoration: 'none',
+    color: 'black',
   },
 }));
 
+
+
 export default function Navigation() {
     
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <NavLogo />
-            <div className="menuButton">
-                <Link to="/sign-in" color="inherit">Sign In</Link>
-                <Link to="/sign-up" color="inherit">Sign Up</Link>
-            </div>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <AppBar position="static">
+        <Toolbar className={classes.toolbar}>
+          <NavLogo />
+          <form className={classes.container} noValidate autoComplete="off">
+            
+            <TextField
+              id="standard-search"
+              label="Search"
+              type="search"
+              className={classes.textField}
+              margin="normal"
+            />
+          </form>
+          <div className={classes.links}>
+              <Link to="/sign-in" color="inherit" className={classes.btn}>Sign In</Link>
+              <Link to="/sign-up" color="inherit" className={classes.btn}>Sign Up</Link>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}

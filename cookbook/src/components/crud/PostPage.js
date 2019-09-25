@@ -1,8 +1,8 @@
 //* Alexis */
 import React, { useState, useReducer, useEffect } from 'react';
-import { reducer, initialState } from './reducers/PostReducer';
+import { } from './contexts/PostContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
-import Post from './Post';
+import Post from './PostCard';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -53,7 +53,6 @@ const useStyles = makeStyles(theme => ({
 const PostPage = () => {
     const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
     const [posts, setPosts] = useState([]);
-    const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
