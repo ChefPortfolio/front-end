@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
@@ -10,6 +10,19 @@ import ChefPortfolio from './components/crud/ChefPortfolio';
 
 
 function App() {
+//   const [recipes, setRecipes] = useState([]);
+
+//   useEffect(() => {
+//     axios.get('https://lambdacooks.herokuapp.com/api/recipes/')
+//     .then(res => {
+//       console.log(res);
+//       setRecipes(res.data);
+//   })
+//   .catch(err => {
+//       console.log('Error in GET post api', err.response);
+//   })
+// }, []);
+
   return (
     <Router>
       <div className="App">

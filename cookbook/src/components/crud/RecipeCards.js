@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 //* Please Do Not Delete this */
-const Post = props => {
+const Recipe = props => {
+    useEffect(() => {
+        console.log(props);
+    })
     return (
         <>
             <div className="post-card">
@@ -14,4 +17,4 @@ const Post = props => {
     )
 }
 
-export default Post;
+export default Recipe;

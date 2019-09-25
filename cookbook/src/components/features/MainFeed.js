@@ -1,7 +1,17 @@
-import React from "react";
-import RecipeCard from '../crud/RecipeCard'
+
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+//Import context
+import { MainFeedContext } from '../crud/contexts/MainFeedContext'
+
+import Navigation from "./Navigation";
+import RecipeCard from '../crud/RecipeCard';
+import RecipeCards from '../crud/RecipeCards';
+
+
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
+
 
 
 import Navigation from "./Navigation"
@@ -22,6 +32,22 @@ const useStyles = makeStyles(theme => ({
 
   }));
 
+
+const  MainFeed = () => {
+
+    const [recipe, setRecipe] = useState([]);
+
+    useEffect(() => {
+        // * Get request for getting posts data goes HERE */
+        axios.get(`https://lambdacooks.herokuapp.com/api/recipes`)
+            .then(res => {
+                console.log('server res:',res);
+                setRecipe(res.data);
+            })
+            .catch(err => {
+                console.log('Error in GET post api', err.response);
+            })
+    }, [])
 
 
 const DummyData = [
@@ -95,6 +121,13 @@ export default function MainFeed(){
     return(
         <div>
             <Navigation />
+
+            {recipe.map(card => {
+                return <RecipeCard title={card.title} description={card.description} />
+            })}
+            {console.log('recipe after setState:', recipe)}
+            
+
             <Grid container className={classes.root} justify='center'>
                 {DummyData.map(recipe => {
                     return (
@@ -110,9 +143,14 @@ export default function MainFeed(){
                     )
                 })}
             </Grid>
+
         </div>
     )
 }
+
+
+export default MainFeed;
+
 
 //* Please leave this here */
 // 1. Sign In & Sign Up
