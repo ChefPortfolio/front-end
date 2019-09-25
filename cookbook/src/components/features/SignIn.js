@@ -90,7 +90,7 @@ const SignIn= props => {
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.payload);
-        props.history.push('/Profile');
+        props.history.push('/');
       })
       .catch(err => {
         console.log(err.response);
