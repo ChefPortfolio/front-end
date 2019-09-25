@@ -17,6 +17,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MenuItem from '@material-ui/core/MenuItem'
 
 
 
@@ -86,7 +87,7 @@ export default function RecipeReviewCard(props) {
             >
               <MenuItem onClick={handleClose}>Edit Post</MenuItem>
               <MenuItem onClick={handleClose}>Delete</MenuItem>
-            />
+            </MoreVertIcon>
           </IconButton>
         }
         title={props.title}
