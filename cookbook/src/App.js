@@ -8,10 +8,12 @@ import SignIn from "./components/features/SignIn";
 import SignUp from "./components/features/SignUp";
 
 
+
 function App() {
   return (
     <Router>
       <div className="App">
+     
     
       <Route exact path='/' component={MainFeed} />
       <Route path="/sign-in" render={props => <SignIn {...props}/>} />
