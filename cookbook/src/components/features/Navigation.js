@@ -8,15 +8,24 @@ import NavLogo from '../logos/NavLogo';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
+  outlinedRoot: {
+    '&:hover $notchedOutline': {
+      borderColor: 'red'
+    },
+    '&$focused $notchedOutline': {
+      borderColor: 'green',
+      borderWidth: 1
+    }
+  },
   toolbar: {
     display: 'flex',
     justifyContent: 'space-around',
-    background: 'rgb(220,220,220)',
+    background: 'rgba(211,211,211,0.9)',
   },
   textField: {
     paddingBottom: '1.5rem',
     width: '25rem',
-    marginLeft: '5rem',
+    marginLeft: '11rem',
   },
   links: {
     marginLeft: '40px',
@@ -28,6 +37,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: 'black',
   },
+  
 }));
 
 
