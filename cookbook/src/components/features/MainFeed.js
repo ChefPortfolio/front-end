@@ -6,7 +6,7 @@ import { MainFeedContext } from '../crud/contexts/MainFeedContext'
 
 import Navigation from "./Navigation";
 import RecipeCard from '../crud/RecipeCard';
-import RecipeCards from '../crud/RecipeCards';
+
 
 
 import Grid from '@material-ui/core/Grid'
@@ -53,7 +53,7 @@ export default function MainFeed(){
                     <Grid item className={classes.gridItem} s>
                         <RecipeCard key={recipe.id}
                         title={recipe.title}
-                        subheader={recipe.meal_type}
+                        // subheader={recipe.meal_type}
                         image={recipe.pic_url}
                         description={recipe.description}
                         instructions={recipe.instructions}

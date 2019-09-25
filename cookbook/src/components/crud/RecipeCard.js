@@ -86,7 +86,7 @@ export default function RecipeReviewCard(props) {
             >
               <MenuItem onClick={handleClose}>Edit Post</MenuItem>
               <MenuItem onClick={handleClose}>Delete</MenuItem>
-            />
+            </MoreVertIcon>
           </IconButton>
         }
         title={props.title}
