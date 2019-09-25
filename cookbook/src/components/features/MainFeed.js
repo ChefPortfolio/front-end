@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 export default function MainFeed(){
     const classes = useStyles();
     const [recipe, setRecipe] = useState([]);
-
+    
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
         axios.get(`https://lambdacooks.herokuapp.com/api/recipes`)
