@@ -90,7 +90,6 @@ const SignIn= props => {
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.payload);
-        localStorage.setItem('user_id', res.data.payload.user.id);
         props.history.push('/');
       })
       .catch(err => {

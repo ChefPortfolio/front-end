@@ -1,9 +1,12 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+//Import context
+import { MainFeedContext } from '../crud/contexts/MainFeedContext'
 
 import Navigation from "./Navigation";
 import RecipeCard from '../crud/RecipeCard';
+import RecipeCards from '../crud/RecipeCards';
 
 
 import Grid from '@material-ui/core/Grid'
@@ -54,7 +57,6 @@ export default function MainFeed(){
                         image={recipe.pic_url}
                         description={recipe.description}
                         instructions={recipe.instructions}
-                        avatar={recipe.avatar_url}
                         />
                         </Grid>
                     )
