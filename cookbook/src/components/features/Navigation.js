@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-around',
     background: 'rgba(211,211,211,0.9)',
+    
   },
   textField: {
     paddingBottom: '1.5rem',
