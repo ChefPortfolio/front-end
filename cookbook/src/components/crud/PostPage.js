@@ -1,106 +1,194 @@
 //* Alexis */
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import { initialState } from './reducers/PostReducer';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+import { Container } from '@material-ui/core';
+import OrangeEmblem from '../logos/OrangeEmblem.js';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  },
+
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#D96704',
+    '&:hover': {
+      backgroundColor: '#141c26'
+    }
+  }
+}));
+
+const inputLabel = React.useRef(null);
+const [labelWidth, setLabelWidth] = React.useState(0);
+React.useEffect(() => {
+  setLabelWidth(inputLabel.current.offsetWidth);
+}, []);
 
 const PostPage = () => {
-    const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
-    const [post, setPost] = useState([]);
-    const [state, dispatch] = useReducer(reducer, initialState);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-    useEffect(() => {
-        // * Get request for getting posts data goes HERE */
-        axiosWithAuth().get(`https://lambdacooks.herokuapp.com/api/recipes`)
-            .then(res => {
-                console.log(res);
-                setPost(res.data);
-            })
-            .catch(err => {
-                console.log('Error in GET POST api', err.response);
-            })
-    }, [])
+  const [newPost, setNewPost] = useState({
+    title: '',
+    description: '',
+    instructions: '',
+    meal_type: ''
+  });
+  const [post, setPost] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    const handleChanges = e => {
-        setNewPost({...newPost, [e.target.name]: e.target.value});
-    };
+  useEffect(() => {
+    // * Get request for getting posts data goes HERE */
+    axiosWithAuth()
+      .get(`https://lambdacooks.herokuapp.com/api/recipes`)
+      .then(res => {
+        console.log(res);
+        setPost(res.data);
+      })
+      .catch(err => {
+        console.log('Error in GET POST api', err.response);
+      });
+  }, []);
 
-    const addPost = e => {
-        e.preventDefault();
-        //* POST request for adding a post goes HERE */
-        axiosWithAuth().post(`https://lambdacooks.herokuapp.com/api/recipes`, newPost)
-            .then(res => {
-                console.log('POST request for addPost', res);
-                setNewPost(res.data);
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-                dispatch({ type: 'ADD_POST', payload})
-            })
-            .catch(err => {
-                console.log('Error in POST request for addPost', err.response)
-            });
-        setNewPost('');
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    }
-    console.log('State', state);
+  const handleChanges = e => {
+    setNewPost({ ...newPost, [e.target.name]: e.target.value });
+  };
 
-    return (
-        <>
-            <h1>Welcome to your Post</h1>
-            <form>
-                <div className="post-form">
-                    <label>Title: </label>
-                    <input
-                        className="post-form"
-                        type="text"
-                        name="title"
-                        placeholder="Add a title"
-                        value={post.title} required
-                        onChange={handleChanges}
-                    />
-                </div>
+  const addPost = e => {
+    e.preventDefault();
+    //* POST request for adding a post goes HERE */
+    axiosWithAuth()
+      .post(`https://lambdacooks.herokuapp.com/api/recipes`, newPost)
+      .then(res => {
+        console.log('POST request for addPost', res);
+        setNewPost(res.data);
 
-                <div className="post-form">
-                    <label>Description: </label>
-                    <input
-                        className="post-form"
-                        type="text"
-                        name="description"
-                        placeholder="Add a description"
-                        value={post.description} required
-                        onChange={handleChanges}
-                    />
-                </div>
+        dispatch({ type: 'ADD_POST', payload });
+      })
+      .catch(err => {
+        console.log('Error in POST request for addPost', err.response);
+      });
+    setNewPost('');
+  };
+  console.log('State', state);
 
-                <div className="post-form">
-                    <label>Instructions: </label>
-                    <input
-                        className="post-form"
-                        type="text"
-                        name="instructions"
-                        placeholder="Add instructions"
-                        value={post.instructions} required
-                        onChange={handleChanges}
-                    />
-                </div>
-
-                <div className="post-form">
-                    <label>Meal Type: </label>
-                    <select 
-                        className= "post-group"
-                        type= "text"
-                        name= "meal_type"
-                        onChange= {handleChanges}
-                        value={post.meal_type} required>
-                            <option value="">Select Category</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dinner">Dinner</option>
-                    </select>
-                </div>
-
-                <button onClick={addPost} className="add-post-btn">Add Post</button>
-            </form>
-        </>
-    );
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <div>
+          <OrangeEmblem />
+        </div>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="title"
+                variant="outlined"
+                fullWidth
+                id="title"
+                label="Recipe Name"
+                autoFocus
+                InputProps={{
+                  classes: {
+                    outlined: classes.outlined,
+                    focused: classes.focused
+                  }
+                }}
+                value={post.title}
+                required
+                onChange={handleChanges}
+              />
+            </Grid>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <Select
+                value={post.meal_type}
+                onChange={handleChanges}
+                labelWidth={labelWidth}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Breakfast">Breakfast</MenuItem>
+                <MenuItem value="Lunch">Lunch</MenuItem>
+                <MenuItem value="Dinner">Dinner</MenuItem>
+              </Select>
+            </FormControl>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="description"
+                variant="outlined"
+                fullWidth
+                id="description"
+                label="Short Description"
+                value={post.description}
+                required
+                onChange={handleChanges}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="instructions"
+                variant="outlined"
+                fullWidth
+                id="instructions"
+                label="Recipe Prepare Instructions"
+                value={post.instructions}
+                required
+                onChange={handleChanges}
+              />
+            </Grid>
+            </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onChange={handleChanges}
+            onClick={addPost}
+          >
+            Add Recipe
+          </Button>
+        </form>
+      </div>
+    </Container>
+  );
 };
 
 export default PostPage;
