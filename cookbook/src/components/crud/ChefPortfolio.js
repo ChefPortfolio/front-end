@@ -1,5 +1,7 @@
+///* THIS IS WHERE CHEFS CAN CREATE THEIR PORTFOLIO */
+
 import React, { useState, useEffect, useReducer } from 'react';
-import { reducer, initialState } from './reducers/ChefReducer';
+import { } from './contexts/ChefContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Chef from './Chef';
 
@@ -7,7 +9,7 @@ import Chef from './Chef';
 const ChefPortfolio = () => {
     const [newChef, setNewChef] = useState({id: '', first_name: '', last_name: '', location: '', contact: '', username: '', password: '', email_address: '', avatar_url: ''})
     const [chefs, setChefs] = useState([]);
-    const [state, dispatch] = useReducer(reducer, initialState);
+    // const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
@@ -33,14 +35,12 @@ const ChefPortfolio = () => {
                 console.log('POST request for addChef', res);
                 setNewChef(res.data);
 
-                dispatch({ type: 'ADD_CHEF', payload: res.data})
             })
             .catch(err => {
                 console.log('Error in POST request for addChef', err.response)
             });
         setNewChef('');
     }
-    console.log('Chef State', state);
 
 
    return (
