@@ -1,5 +1,8 @@
 import React from 'react';
 
+// import modal
+import PostModal from './postModal';
+
 const Chef = props => {
     return (
         <>
@@ -10,6 +13,12 @@ const Chef = props => {
                 <p>{props.chef.contact}</p>
                 <p>{props.chef.username}</p>
                 
+                {/* if(localStorage.getItem('token')) {
+                    return <PostModal />
+                } else {
+                    return <button className="follow-btn">Follow</button>
+                } */}
+
             </div>
         </>
     )
