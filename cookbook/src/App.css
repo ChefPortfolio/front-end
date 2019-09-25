@@ -38,3 +38,8 @@
   font-size: 12px;  
 }
 
+.MuiPaper-root.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorPrimary {
+  box-shadow: none;
+  background-color: rgba(198, 198, 198, 0.2);
+}
+
