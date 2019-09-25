@@ -17,7 +17,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MenuItem from '@material-ui/core/MenuItem'
 
 
 
@@ -29,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap'
   },
   media: {
-    height: 40,
+    height: 0,
     paddingTop: '56.25%', // 16:9
   },
   text: {
@@ -52,17 +51,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -73,21 +62,12 @@ export default function RecipeReviewCard(props) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.avatar}
+            R
           </Avatar>
         }
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon 
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>Edit Post</MenuItem>
-              <MenuItem onClick={handleClose}>Delete</MenuItem>
-            </MoreVertIcon>
+            <MoreVertIcon />
           </IconButton>
         }
         title={props.title}
