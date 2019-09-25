@@ -51,7 +51,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -67,7 +77,16 @@ export default function RecipeReviewCard(props) {
         }
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            <MoreVertIcon 
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Edit Post</MenuItem>
+              <MenuItem onClick={handleClose}>Delete</MenuItem>
+            />
           </IconButton>
         }
         title={props.title}
