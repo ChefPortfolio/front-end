@@ -4,14 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import Toolbar from '@material-ui/core/Toolbar';
-import NavLogo from '../logos/NavLogo';
+import NavLogoGrey from '../logos/NavLogoGrey';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   outlinedRoot: {
-    '&:hover $notchedOutline': {
-      borderColor: 'red'
-    },
     '&$focused $notchedOutline': {
       borderColor: 'green',
       borderWidth: 1
@@ -20,13 +17,14 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'space-around',
-    background: 'rgba(211,211,211,0.9)',
-    
+    backgroundColor: '#F2F2F2',
+    border: 'none',
   },
   textField: {
     paddingBottom: '1.5rem',
     width: '25rem',
     marginLeft: '11rem',
+    color: '#A4A4A4',
   },
   links: {
     marginLeft: '40px',
@@ -36,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
   btn: {
     textDecoration: 'none',
-    color: 'black',
+    color: '#A4A4A4',
   },
   
 }));
@@ -51,7 +49,7 @@ export default function Navigation() {
     <div>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
-          <NavLogo />
+          <NavLogoGrey />
           <form className={classes.container} noValidate autoComplete="off">
             
             <TextField
