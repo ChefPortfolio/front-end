@@ -22,11 +22,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
   card: {
+    minWidth: 365,
     maxWidth: 365,
+    minHeight: 430,
+    flexWrap: 'wrap'
   },
   media: {
-    height: 0,
+    height: 40,
     paddingTop: '56.25%', // 16:9
+  },
+  text: {
+    minHeight: 40,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -73,7 +79,7 @@ export default function RecipeReviewCard(props) {
         title={props.title}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography className={classes.Text} variant="body2" color="textSecondary" component="p">
           {props.description}
         </Typography>
       </CardContent>
