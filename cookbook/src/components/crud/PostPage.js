@@ -3,7 +3,6 @@ import React, { useState, useReducer, useEffect } from 'react';
 import { reducer, initialState } from './reducers/PostReducer';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Post from './Post';
-import { initialState } from './reducers/PostReducer';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -68,25 +67,25 @@ const PostPage = () => {
             })
     }, [])
 
-const inputLabel = React.useRef(null);
-const [labelWidth, setLabelWidth] = React.useState(0);
-React.useEffect(() => {
-  setLabelWidth(inputLabel.current.offsetWidth);
-}, []);
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
 
-const PostPage = () => {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+// const PostPage = () => {
+//   const classes = useStyles();
+//   const [open, setOpen] = React.useState(false);
 
 
-  const [newPost, setNewPost] = useState({
-    title: '',
-    description: '',
-    instructions: '',
-    meal_type: ''
-  });
-  const [post, setPost] = useState([]);
-  const [state, dispatch] = useReducer(reducer, initialState);
+//   const [newPost, setNewPost] = useState({
+//     title: '',
+//     description: '',
+//     instructions: '',
+//     meal_type: ''
+//   });
+//   const [post, setPost] = useState([]);
+//   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     // * Get request for getting posts data goes HERE */
@@ -146,14 +145,17 @@ const PostPage = () => {
                     focused: classes.focused
                   }
                 }}
-                value={post.title}
+                value={posts.title}
                 required
                 onChange={handleChanges}
               />
             </Grid>
             <FormControl variant="outlined" className={classes.formControl}>
               <Select
-                value={post.meal_type}
+                name="meal_type"
+                label="Meal Type"
+                id="meal_type"
+                value={posts.meal_type}
                 onChange={handleChanges}
                 labelWidth={labelWidth}
               >
@@ -172,7 +174,7 @@ const PostPage = () => {
                 fullWidth
                 id="description"
                 label="Short Description"
-                value={post.description}
+                value={posts.description}
                 required
                 onChange={handleChanges}
               />
@@ -184,7 +186,7 @@ const PostPage = () => {
                 fullWidth
                 id="instructions"
                 label="Recipe Prepare Instructions"
-                value={post.instructions}
+                value={posts.instructions}
                 required
                 onChange={handleChanges}
               />
@@ -209,5 +211,6 @@ const PostPage = () => {
     </Container>
   );
 };
+
 
 export default PostPage;
