@@ -1,6 +1,10 @@
 //* Alexis */
-import React, { useState, useReducer, useEffect } from 'react';
+
+//Imports 
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+
+//Material-UI
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +16,7 @@ import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
 import OrangeEmblem from '../logos/OrangeEmblem.js';
 
+//* Material-UI */
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -43,11 +48,9 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
+//* */
 
-
-
-
-const PostPage = () => {
+const RecipePage = () => {
     const [newPost, setNewPost] = useState({title: '', description: '', instructions: '', meal_type: ''});
     const [posts, setPosts] = useState([]);
 
@@ -63,6 +66,7 @@ const PostPage = () => {
             })
     }, [])
 
+  //* Material-UI */
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -72,19 +76,8 @@ const PostPage = () => {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  //*  */
 
-
-//   const [newPost, setNewPost] = useState({
-//     title: '',
-//     description: '',
-//     instructions: '',
-//     meal_type: ''
-//   });
-//   const [post, setPost] = useState([]);
-//   const [state, dispatch] = useReducer(reducer, initialState);
-
-  
-  
   const handleChanges = e => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
   };
@@ -193,4 +186,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default RecipePage;
