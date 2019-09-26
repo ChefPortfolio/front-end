@@ -173,7 +173,7 @@ const RecipePage = () => {
                   variant="outlined"
                   fullWidth
                   id="pic_url"
-                  label="Picture"
+                  label="Photo"
                   autoFocus
                   InputProps={{
                   classes: {
