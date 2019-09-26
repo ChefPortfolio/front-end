@@ -56,3 +56,6 @@
   border-bottom: 2px solid rgba(198, 198, 198);
 }
 
+.MuiInputBase-input.MuiInput-input.MuiInputBase-inputTypeSearch.MuiInput-inputTypeSearch {
+  color: black;
+}
