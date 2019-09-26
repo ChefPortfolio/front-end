@@ -32,7 +32,7 @@ export default function MainFeed(){
     
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
-        axios.get(`https://lambdacooks.herokuapp.com/api/recipes`)
+        axios.get(`https://chefbook-stacy.herokuapp.com/api/recipes`)
             .then(res => {
                 console.log('server res:',res);
                 setRecipes(res.data);
