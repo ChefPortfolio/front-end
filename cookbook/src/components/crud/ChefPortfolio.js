@@ -69,16 +69,14 @@ const ChefPortfolio = () => {
     chef_id: '',
     pic_url: ''
   });
-  // const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     // * Get request for getting posts data goes HERE */
     // const id = localStorage.getItem('user_id');
 
     //* When backend delivers an id, need to get id to localStorage instead of hard code */
-    const id = '1';
     axiosWithAuth()
-      .get(`https://lambdacooks.herokuapp.com/api/chefs/${id}/recipes`)
+      .get(`https://chefbook-stacy.herokuapp.com/api/chefs/${id}/recipes`)
       .then(res => {
         console.log('GET request for chefs', res);
         setChef(res.data);
@@ -102,9 +100,7 @@ const ChefPortfolio = () => {
     const id = '1';
     axiosWithAuth()
       .post(
-        `https://lambdacooks.herokuapp.com/api/chefs/${id}/recipes/`,
-        newRecipe
-      )
+        (`https://chefbook-stacy.herokuapp.com/api/recipes/`, newRecipe)
       .then(res => {
         console.log('POST request for addRecipe', res);
         setNewRecipe(res.data);
