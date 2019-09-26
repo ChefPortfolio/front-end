@@ -74,7 +74,7 @@ const SignUp = props => {
   const submitForm = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post('https://lambdacooks.herokuapp.com/api/auth/register', newUser)
+      .post('https://chefbook-stacy.herokuapp.com/api/auth/register', newUser)
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.payload);
