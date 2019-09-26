@@ -3,9 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogoGrey from '../logos/NavLogoGrey';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 import axios from 'axios'
 
@@ -34,6 +35,10 @@ const useStyles = makeStyles(theme => ({
   
 }));
 
+//Material UI
+const HomeLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/" {...props} />
+));
 
 
 export default function Navigation() {
@@ -61,7 +66,9 @@ export default function Navigation() {
     <div>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
-          <NavLogoGrey />
+          <Link component={HomeLink}>
+            <NavLogoGrey />
+          </Link>
           <form className={classes.container} noValidate autoComplete="off">
             
             <TextField
@@ -75,9 +82,9 @@ export default function Navigation() {
             />
           </form>
           <div className={classes.links}>
-              <Link to="/sign-in" color="inherit" className={classes.btn}>Sign In</Link>
-              <Link to="/sign-up" color="inherit" className={classes.btn}>Sign Up</Link>
-              <Link to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</Link>
+              <RouterLink to="/sign-in" color="inherit" className={classes.btn}>Sign In</RouterLink>
+              <RouterLink to="/sign-up" color="inherit" className={classes.btn}>Sign Up</RouterLink>
+              <RouterLink to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</RouterLink>
           </div>
         </Toolbar>
       </AppBar>

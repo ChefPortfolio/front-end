@@ -29,9 +29,14 @@ function Copyright() {
 }
 
 //Material UI
+const HomeLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/" {...props} />
+));
+
 const SignInLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/sign-in" {...props} />
 ));
+
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -98,9 +103,9 @@ const SignUp = props => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <div>
+        <Link component={HomeLink}>
           <BlueEmblem />
-        </div>
+        </Link>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
