@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Navigation from "./Navigation";
 import RecipeCard from '../crud/RecipeCard';
+import Footer from './Footer'
 
 
 import Grid from '@material-ui/core/Grid'
@@ -60,7 +61,7 @@ export default function MainFeed(){
                     )
                 })}
             </Grid>
-
+            <Footer />
         </div>
     )
 }

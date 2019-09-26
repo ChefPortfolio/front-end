@@ -31,6 +31,10 @@ function Copyright() {
 }
 
 //Material UI
+const HomeLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/" {...props} />
+));
+
 const SignUpLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/sign-up" {...props} />
 ));
@@ -110,9 +114,9 @@ const SignIn= props => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <div>
+        <Link component={HomeLink}>
           <OrangeEmblem />
-        </div>
+        </Link>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>

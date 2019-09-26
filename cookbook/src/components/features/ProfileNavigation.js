@@ -85,9 +85,7 @@ export default function Navigation() {
             />
           </form>
           <div className={classes.links}>
-              <RouterLink to="/sign-in" color="inherit" className={classes.btn}>Sign In</RouterLink>
-              <RouterLink to="/sign-up" color="inherit" className={classes.btn}>Sign Up</RouterLink>
-              <RouterLink to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</RouterLink>
+              <a href="#" className={classes.btn}>Sign Out</a>
           </div>
         </Toolbar>
       </AppBar>

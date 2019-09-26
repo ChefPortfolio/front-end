@@ -73,6 +73,121 @@ const EditRecipe = ({recipes, updateRecipes}) => {
                    </li>
                 ))}
                 {editing && (
+                    //PLEASE DO NOT DELETE STYLING                    
+                    <Container component="main" maxWidth="xs">
+                        <CssBaseline />
+                        <div className={classes.paper}>
+                            <div>
+                            <OrangeEmblem />
+                            </div>
+                            <form className={classes.form} noValidate>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                <TextField
+                                    name="title"
+                                    variant="outlined"
+                                    fullWidth
+                                    id="title"
+                                    label="Recipe Name"
+                                    autoFocus
+                                    InputProps={{
+                                    classes: {
+                                        outlined: classes.outlined,
+                                        focused: classes.focused
+                                    }
+                                    }}
+                                    value={recipeToEdit.title}
+                                    required
+                                    onChange={e => 
+                                        setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                                    }
+                                />
+                                </Grid>
+                                <FormControl variant="outlined" className={classes.formControl}>
+                                <Select
+                                    name="meal_type"
+                                    label="Meal Type"
+                                    id="meal_type"
+                                    value={recipeToEdit.meal_type}
+                                    onChange={e => 
+                                        setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                                    }
+                                    labelWidth={labelWidth}
+                                >
+                                    <MenuItem value="">
+                                    <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value="Breakfast">Breakfast</MenuItem>
+                                    <MenuItem value="Lunch">Lunch</MenuItem>
+                                    <MenuItem value="Dinner">Dinner</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <Grid item xs={12} sm={6}>
+                                <TextField
+                                    name="description"
+                                    variant="outlined"
+                                    fullWidth
+                                    id="description"
+                                    label="Short Description"
+                                    value={recipeToEdit.description}
+                                    required
+                                    onChange={e => 
+                                        setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                                    }
+                                />
+                                </Grid>
+                                <Grid item xs={12}>
+                                <TextField
+                                    name="instructions"
+                                    variant="outlined"
+                                    fullWidth
+                                    id="instructions"
+                                    label="Recipe Prepare Instructions"
+                                    value={recipeToEdit.instructions}
+                                    required
+                                    onChange={e => 
+                                        setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                                    }
+                                />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                <TextField
+                                    name="pic_url"
+                                    variant="outlined"
+                                    fullWidth
+                                    id="pic_url"
+                                    label="Photo"
+                                    autoFocus
+                                    InputProps={{
+                                    classes: {
+                                        outlined: classes.outlined,
+                                        focused: classes.focused
+                                    }
+                                    }}
+                                    value={recipeToEdit.pic_url}
+                                    required
+                                    onChange={e => 
+                                        setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                                    }
+                                />
+                                </Grid>
+                                </Grid>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                onChange={handleChanges}
+                                onClick={() => setEditing(false)}
+                            >
+                                Edit Recipe
+                            </Button>
+                            </form>
+                        </div>
+                        
+                        </Container>
+
                     <form onSubmit={saveEdit}>
                         <h1>Edit Recipe</h1>
                         <label>Title:
