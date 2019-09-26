@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -12,15 +12,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import BlueEmblem from '../logos/BlueEmblem.js';
 import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
-
+import { Link } from 'react-router-dom'
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <div color="inherit" href="https://material-ui.com/">
         CookBook
-      </Link>{' '}
+      </div>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -108,7 +108,7 @@ const SignUp = props => {
                 required
                 fullWidth
                 id="first_name"
-                label="first_name"
+                label="First Name"
                 autoFocus
                 onChange={handleChanges}
                 InputProps={{
@@ -125,7 +125,7 @@ const SignUp = props => {
                 required
                 fullWidth
                 id="last_name"
-                label="last_name"
+                label="Last Name"
                 name="last_name"
                 autoComplete="lname"
                 onChange={handleChanges}
@@ -183,11 +183,11 @@ const SignUp = props => {
             className={classes.submit}
             onClick={submitForm}
           >
-            Sign Up
+            Continue
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
+              <Link to="/user-info" variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
