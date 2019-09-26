@@ -45,13 +45,14 @@
 
 /* navbar styles*/
 .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
-  color: rgba(198, 198, 198,);
+  color: rgba(198, 198, 198);
 }
 
-.MuiInputBase-root.MuiInput-root.MuiInput-underline.Mui-focused.Mui-focused.MuiInputBase-formControl.MuiInput-formControl {
-  color: red;
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl {
+  color: rgba(198, 198, 198);
 }
 
-.MuiInputBase-input.MuiInput-input.MuiInputBase-inputTypeSearch.MuiInput-inputTypeSearch {
-  color: #141c26;
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-underline:after {
+  border-bottom: 2px solid rgba(198, 198, 198);
 }
+
