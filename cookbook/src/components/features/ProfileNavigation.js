@@ -85,7 +85,7 @@ export default function Navigation() {
             />
           </form>
           <div className={classes.links}>
-              <a href="#">Sign Out</a>
+              <a href="#" className={classes.btn}>Sign Out</a>
           </div>
         </Toolbar>
       </AppBar>
