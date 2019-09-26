@@ -50,7 +50,7 @@ export default function MainFeed(){
                     <Grid item className={classes.gridItem} s>
                         <RecipeCard key={recipe.id}
                         title={recipe.title}
-                        subheader={recipe.meal_type}
+                        // subheader={recipe.meal_type}
                         image={recipe.pic_url}
                         description={recipe.description}
                         instructions={recipe.instructions}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import modal
-import PostModal from './postModal';
+import PostModal from './PostModal';
 
 const Chef = props => {
     return (

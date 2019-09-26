@@ -67,7 +67,7 @@ const RecipePage = () => {
     }, [])
 
   //* Material-UI */
-  const inputLabel = React.useRef(null);
+  const inputLabel = React.useRef(0);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -167,6 +167,25 @@ const RecipePage = () => {
                 onChange={handleChanges}
               />
             </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                  name="pic_url"
+                  variant="outlined"
+                  fullWidth
+                  id="pic_url"
+                  label="Picture"
+                  autoFocus
+                  InputProps={{
+                  classes: {
+                      outlined: classes.outlined,
+                      focused: classes.focused
+                  }
+                  }}
+                  value={posts.pic_url}
+                  required
+                  onChange={handleChanges}
+              />
+              </Grid>
             </Grid>
           <Button
             type="submit"
