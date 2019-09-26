@@ -98,7 +98,7 @@ const SignIn= props => {
         localStorage.setItem('token', res.data.token);
 
         //* Backend to deliver id in payload, set local id to storage */
-        // localStorage.setItem('user_id', res.data.id);
+        localStorage.setItem('chef_id', res.data.id);
         props.history.push('/chefportfolio');
       })
       .catch(err => {
