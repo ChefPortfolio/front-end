@@ -9,8 +9,14 @@ import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
-  toolbar: {
+  appbar: {
+    width: '100%',
     display: 'flex',
+    alignItems: 'center'
+  },
+  toolbar: {
+    width: '80%', 
+    display: 'flex', 
     justifyContent: 'space-between',
     backgroundColor: '#F2F2F2',
     border: 'none',
@@ -44,7 +50,7 @@ export default function Navigation() {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar className={classes.appbar} position="static">
         <Toolbar className={classes.toolbar}>
           <Link component={HomeLink}>
             <NavLogoGrey />
