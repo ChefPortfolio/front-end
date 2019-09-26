@@ -6,6 +6,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogoGrey from '../logos/NavLogoGrey';
 import { Link } from 'react-router-dom';
+import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   outlinedRoot: {
@@ -42,8 +44,25 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Navigation() {
+    const classes = useStyles();
+    const [recipe, setRecipe] = React.useState([]);
+    const [query, setQuery] = React.useState('');
+
+    React.useEffect(() => {
+      axios
+      .get(`https://lambdacooks.herokuapp.com/api/recipes`)
+      .then(res => {
+        const data= res.data;
+        const result = data.filter(post =>
+          post.recipe.toLowerCase().includes(query.toLowerCase())
+        );
+        setRecipe(result);
+      });
+    }, [query]);
     
-  const classes = useStyles();
+    const handleInputChange = e => {
+      setQuery(e.target.value);
+    };
 
   return (
     <div>
@@ -56,6 +75,8 @@ export default function Navigation() {
               id="standard-search"
               label="Search"
               type="search"
+              onChange={handleInputChange}
+              value={query}
               className={classes.textField}
               margin="normal"
             />
