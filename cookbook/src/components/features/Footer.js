@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
     root: {
-      width: '100%',
+      margin: 'auto',
+      width: '70%',
       backgroundColor: theme.palette.background.paper,
     },
     dividerFullWidth: {
