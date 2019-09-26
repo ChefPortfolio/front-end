@@ -1,28 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-
+//Component Imports
 import MainFeed from "./components/features/MainFeed";
 import SignIn from "./components/features/SignIn";
 import SignUp from "./components/features/SignUp";
 import UserInfo from './components/features/UserInfo'
 import ChefPortfolio from './components/crud/ChefPortfolio';
+// import PrivateRoute from './components/crud/PrivateRoute';
 
 
 function App() {
-//   const [recipes, setRecipes] = useState([]);
-
-//   useEffect(() => {
-//     axios.get('https://lambdacooks.herokuapp.com/api/recipes/')
-//     .then(res => {
-//       console.log(res);
-//       setRecipes(res.data);
-//   })
-//   .catch(err => {
-//       console.log('Error in GET post api', err.response);
-//   })
-// }, []);
 
   return (
     <Router>

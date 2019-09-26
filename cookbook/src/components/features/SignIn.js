@@ -74,7 +74,7 @@ const SignIn= props => {
   const classes = useStyles();
 
   const [user, setUser] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
@@ -88,15 +88,16 @@ const SignIn= props => {
     axiosWithAuth()
       .post('https://lambdacooks.herokuapp.com/api/auth/login', user)
       .then(res => {
-        console.log(res);
-        localStorage.setItem('token', res.data.payload);
-        localStorage.setItem('user_id', res.data.payload.user.id);
-        props.history.push('/');
+        // console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+
+        //* Backend to deliver id in payload, set local id to storage */
+        // localStorage.setItem('user_id', res.data.id);
+        props.history.push('/chefportfolio');
       })
       .catch(err => {
-        console.log(err.response);
+        console.log(err);
       });
-    setUser('');
   };
 
   return (
@@ -115,11 +116,12 @@ const SignIn= props => {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
             autoFocus
+            onChange={handleChanges}
           />
           <TextField
             variant="outlined"
@@ -131,6 +133,7 @@ const SignIn= props => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChanges}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

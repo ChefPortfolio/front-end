@@ -28,14 +28,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainFeed(){
     const classes = useStyles();
-    const [recipe, setRecipe] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     
     useEffect(() => {
         // * Get request for getting posts data goes HERE */
         axios.get(`https://lambdacooks.herokuapp.com/api/recipes`)
             .then(res => {
                 console.log('server res:',res);
-                setRecipe(res.data);
+                setRecipes(res.data);
             })
             .catch(err => {
                 console.log('Error in GET post api', err.response);
@@ -45,7 +45,7 @@ export default function MainFeed(){
         <div>
             <Navigation />
             <Grid container className={classes.root} justify='center'>
-                {recipe.map(recipe => {
+                {recipes.map(recipe => {
                     return (
                     <Grid item className={classes.gridItem} s>
                         <RecipeCard key={recipe.id}
@@ -64,13 +64,3 @@ export default function MainFeed(){
         </div>
     )
 }
-
-
-
-
-//* Please leave this here */
-// 1. Sign In & Sign Up
-// 2. Profile/Dashboard // state is managed  - import UserContext
-//     a. UserBio 
-//     b. Posts 
-//     c. Card 

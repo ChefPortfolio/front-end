@@ -84,6 +84,8 @@ export default function Navigation() {
           <div className={classes.links}>
               <Link to="/sign-in" color="inherit" className={classes.btn}>Sign In</Link>
               <Link to="/sign-up" color="inherit" className={classes.btn}>Sign Up</Link>
+
+              <Link to='/chefportfolio' color="inherit" className={classes.btn}>Chef Portfolio</Link>
           </div>
         </Toolbar>
       </AppBar>
