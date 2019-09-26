@@ -6,6 +6,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import Chef from './Chef';
 import Navigation from '../features/Navigation';
 import RecipeCard from './RecipeCard';
+import Footer from '../features/Footer'
 
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -134,6 +135,7 @@ const ChefPortfolio = () => {
         );
       })}
       ; */}
+      <Footer />
     </>
   );
 };
