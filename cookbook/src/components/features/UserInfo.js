@@ -10,12 +10,10 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import BlueEmblem from '../logos/BlueEmblem.js'
+import BlueEmblem from '../logos/BlueEmblem.js';
 import styled from 'styled-components';
-import SvgIcon from '@material-ui/core/SvgIcon'
-import { createMuiTheme } from '@material-ui/core/styles'
-
-
+import SvgIcon from '@material-ui/core/SvgIcon';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 function Copyright() {
   return (
@@ -36,7 +34,6 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.common.white
     }
   },
-  
 
   paper: {
     marginTop: theme.spacing(8),
@@ -50,15 +47,13 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-
-    
+    marginTop: theme.spacing(3)
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: '#D96704',
     '&:hover': {
-        backgroundColor: '#141c26'
+      backgroundColor: '#141c26'
     }
   }
 }));
@@ -83,10 +78,10 @@ export default function UserInfo() {
                 variant="outlined"
                 required
                 fullWidth
-                id="username"
-                label="Create Username"
-                name="username"
-                autoComplete="username"
+                id="avatar_url"
+                label="Avatar Url"
+                name="avatar_url"
+                autoComplete=""
               />
             </Grid>
             <Grid item xs={12}>
@@ -130,7 +125,7 @@ export default function UserInfo() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" style={{color: '#141C26'}}>
+              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -143,4 +138,3 @@ export default function UserInfo() {
     </Container>
   );
 }
-

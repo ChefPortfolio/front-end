@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring';
-import RecipePage from './RecipePage'
+import EditPage from './EditPage'
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -45,7 +45,7 @@ const Fade = React.forwardRef(function Fade(props, ref) {
   );
 });
 
-export default function PostModal() {
+export default function SpringModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -76,7 +76,7 @@ export default function PostModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <RecipePage />
+            <EditPage />
           </div>
         </Fade>
       </Modal>
