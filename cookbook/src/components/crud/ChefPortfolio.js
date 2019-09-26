@@ -5,7 +5,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import Chef from './Chef';
 import Navigation from '../features/Navigation';
 import RecipeCard from './RecipeCard';
-import PostModal from "./PostModal";
+
 
 const dummyChef = {
     
@@ -117,7 +117,6 @@ const ChefPortfolio = () => {
                     {/* {chef.recipes.map(recipe => {
                         return <RecipeCard props={chef.recipes} />
                     })} */}
-                    <PostModal />
                     {dummyRecipes.map(recipe => {
                         return ( <RecipeCard 
                         title={recipe.title}
