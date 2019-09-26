@@ -10,12 +10,6 @@ import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
-  outlinedRoot: {
-    '&$focused $notchedOutline': {
-      borderColor: 'green',
-      borderWidth: 1
-    }
-  },
   toolbar: {
     display: 'flex',
     justifyContent: 'space-around',
@@ -25,18 +19,17 @@ const useStyles = makeStyles(theme => ({
   textField: {
     paddingBottom: '1.5rem',
     width: '25rem',
-    marginLeft: '11rem',
     color: '#A4A4A4',
   },
   links: {
-    marginLeft: '40px',
-    width: '12rem',
+    width: 300,
     display: 'flex',
     justifyContent: 'space-around',
   },
   btn: {
     textDecoration: 'none',
     color: '#A4A4A4',
+    width: 100,
   },
   
 }));
@@ -84,8 +77,7 @@ export default function Navigation() {
           <div className={classes.links}>
               <Link to="/sign-in" color="inherit" className={classes.btn}>Sign In</Link>
               <Link to="/sign-up" color="inherit" className={classes.btn}>Sign Up</Link>
-
-              <Link to='/chefportfolio' color="inherit" className={classes.btn}>Chef Portfolio</Link>
+              <Link to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</Link>
           </div>
         </Toolbar>
       </AppBar>
