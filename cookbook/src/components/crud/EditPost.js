@@ -188,52 +188,52 @@ const EditRecipe = ({recipes, updateRecipes}) => {
                         
                         </Container>
 
-                    <form onSubmit={saveEdit}>
-                        <h1>Edit Recipe</h1>
-                        <label>Title:
-                            <input 
-                                onChange={e => 
-                                    setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
-                                }
-                                value={recipeToEdit.title}
-                            />
-                        </label>
-                        <label>Description:
-                            <input 
-                                onChange={e => 
-                                    setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
-                                }
-                                value={recipeToEdit.description}
-                            />
-                        </label>
-                        <label>Instructions:
-                            <input 
-                                onChange={e => 
-                                    setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
-                                }
-                                value={recipeToEdit.instructions}
-                            />
-                        </label>
-                        <label>Meal Type:
-                            <input 
-                                onChange={e => 
-                                    setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
-                                }
-                                value={recipeToEdit.meal_type}
-                            />
-                        </label>
-                        <label>Avatar:
-                            <input 
-                                onChange={e => 
-                                    setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
-                                }
-                                value={recipeToEdit.pic_url}
-                            />
-                        </label>
+                    // <form onSubmit={saveEdit}>
+                    //     <h1>Edit Recipe</h1>
+                    //     <label>Title:
+                    //         <input 
+                    //             onChange={e => 
+                    //                 setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                    //             }
+                    //             value={recipeToEdit.title}
+                    //         />
+                    //     </label>
+                    //     <label>Description:
+                    //         <input 
+                    //             onChange={e => 
+                    //                 setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                    //             }
+                    //             value={recipeToEdit.description}
+                    //         />
+                    //     </label>
+                    //     <label>Instructions:
+                    //         <input 
+                    //             onChange={e => 
+                    //                 setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                    //             }
+                    //             value={recipeToEdit.instructions}
+                    //         />
+                    //     </label>
+                    //     <label>Meal Type:
+                    //         <input 
+                    //             onChange={e => 
+                    //                 setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                    //             }
+                    //             value={recipeToEdit.meal_type}
+                    //         />
+                    //     </label>
+                    //     <label>Avatar:
+                    //         <input 
+                    //             onChange={e => 
+                    //                 setRecipeToEdit({...recipeToEdit, recipe: e.target.value})
+                    //             }
+                    //             value={recipeToEdit.pic_url}
+                    //         />
+                    //     </label>
 
-                        <button type="submit">Save</button>
-                        <button onClick={() => setEditing(false)}>Cancel</button>
-                    </form>
+                    //     <button type="submit">Save</button>
+                    //     <button onClick={() => setEditing(false)}>Cancel</button>
+                    // </form>
                 )}
         </>
     )

@@ -31,9 +31,7 @@ export default function Footer() {
                         display="block"
                         variant="caption"
                         >
-
-
-                        Copyright © 2019, CookBook
+                        <a href="https://cook-book.netlify.com/index.html" style={{textDecoration:"none"}}>Copyright © 2019, CookBook</a>
                     </Typography>
                 </li>
             </List>
