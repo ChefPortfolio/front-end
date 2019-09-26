@@ -75,9 +75,8 @@ export default function RecipeReviewCard(props) {
       <CardHeader
         
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.avatar}
-            console.log(avatar)
+          <Avatar aria-label="recipe" className={classes.avatar} src={props.avatar}>
+           
           </Avatar>
         }
        
