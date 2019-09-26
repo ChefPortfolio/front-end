@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import OrangeEmblem from '../logos/OrangeEmblem';
 import {axiosWithAuth} from "../crud/utils/axiosWithAuth"
+import {Link as RouterLink} from "react-router-dom";
 
 
 function Copyright() {
@@ -28,6 +29,11 @@ function Copyright() {
     </Typography>
   );
 }
+
+//Material UI
+const SignUpLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/sign-up" {...props} />
+));
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -157,7 +163,7 @@ const SignIn= props => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
+              <Link component={SignUpLink} variant="body2" style={{ color: '#141C26' }}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

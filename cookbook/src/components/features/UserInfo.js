@@ -13,7 +13,8 @@ import Container from '@material-ui/core/Container';
 import BlueEmblem from '../logos/BlueEmblem.js';
 import styled from 'styled-components';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'; 
+import {Link as RouterLink} from "react-router-dom";
 
 function Copyright() {
   return (
@@ -27,6 +28,11 @@ function Copyright() {
     </Typography>
   );
 }
+
+//Material UI
+const SignInLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/sign-in" {...props} />
+));
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -125,7 +131,7 @@ export default function UserInfo() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" style={{ color: '#141C26' }}>
+              <Link component={SignInLink}  variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>

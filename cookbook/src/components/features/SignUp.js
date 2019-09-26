@@ -7,12 +7,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import BlueEmblem from '../logos/BlueEmblem.js';
 import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
-import { Link } from 'react-router-dom'
+import {Link as RouterLink} from "react-router-dom";
 
 function Copyright() {
   return (
@@ -26,6 +27,11 @@ function Copyright() {
     </Typography>
   );
 }
+
+//Material UI
+const Link1 = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/sign-in" {...props} />
+));
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -187,7 +193,7 @@ const SignUp = props => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/user-info" variant="body2" style={{ color: '#141C26' }}>
+              <Link component={Link1} variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
