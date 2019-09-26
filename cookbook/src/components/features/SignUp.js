@@ -19,9 +19,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <div color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://material-ui.com/">
         CookBook
-      </div>{' '}
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -29,9 +29,14 @@ function Copyright() {
 }
 
 //Material UI
-const Link1 = React.forwardRef((props, ref) => (
+const HomeLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/" {...props} />
+));
+
+const SignInLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/sign-in" {...props} />
 ));
+
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -98,9 +103,9 @@ const SignUp = props => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <div>
+        <Link component={HomeLink}>
           <BlueEmblem />
-        </div>
+        </Link>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -193,7 +198,7 @@ const SignUp = props => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link component={Link1} variant="body2" style={{ color: '#141C26' }}>
+              <Link component={SignInLink} variant="body2" style={{ color: '#141C26' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
