@@ -99,8 +99,7 @@ const ChefPortfolio = () => {
 
     const id = '1';
     axiosWithAuth()
-      .post(
-        (`https://chefbook-stacy.herokuapp.com/api/recipes/`, newRecipe)
+      .post(`https://chefbook-stacy.herokuapp.com/api/recipes/`, newRecipe)
       .then(res => {
         console.log('POST request for addRecipe', res);
         setNewRecipe(res.data);
