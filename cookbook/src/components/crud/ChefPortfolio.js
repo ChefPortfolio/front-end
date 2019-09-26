@@ -4,8 +4,9 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 import Chef from './Chef';
-import Navigation from '../features/Navigation';
+import ProfileNavigation from '../features/ProfileNavigation';
 import RecipeCard from './RecipeCard';
+import Footer from '../features/Footer'
 
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -100,7 +101,7 @@ const ChefPortfolio = () => {
                 </div>
                     <button type="submit" onClick={addRecipe}>Submit</button>
             </form> */}
-      <Navigation />
+      <ProfileNavigation />
       <Chef chef={chef} />
       {/* {chef.recipes.map(recipe => {
                         return <RecipeCard props={chef.recipes} />
@@ -134,6 +135,7 @@ const ChefPortfolio = () => {
         );
       })}
       ; */}
+      <Footer />
     </>
   );
 };
