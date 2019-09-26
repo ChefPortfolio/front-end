@@ -97,9 +97,9 @@ const ChefPortfolio = () => {
     //* POST request for adding a recipe goes HERE */
 
     //* Need to grab from localStorage */
-    const id = localStorage.getItem('chef_id');
-
-    
+    const id = parseInt(localStorage.getItem('chef_id'));
+    newRecipe.chef_id = id;
+    console.log('New Recipe', newRecipe);
     axiosWithAuth().post(`https://chefbook-stacy.herokuapp.com/api/recipes/`, newRecipe)
       .then(res => {
         console.log('POST request for addRecipe', res);
