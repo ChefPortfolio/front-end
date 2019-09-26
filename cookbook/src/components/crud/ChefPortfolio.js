@@ -78,7 +78,7 @@ const ChefPortfolio = () => {
     //* When backend delivers an id, need to get id to localStorage instead of hard code */
     const id = '1';
     axiosWithAuth()
-      .get(`https://lambdacooks.herokuapp.com/api/chefs/${id}/recipes`)
+      .get(`https://chefbook-stacy.herokuapp.com/api/chefs/${id}/recipes`)
       .then(res => {
         console.log('GET request for chefs', res);
         setChef(res.data);
@@ -102,7 +102,7 @@ const ChefPortfolio = () => {
     const id = '1';
     axiosWithAuth()
       .post(
-        `https://lambdacooks.herokuapp.com/api/chefs/${id}/recipes/`,
+        `https://chefbook-stacy.herokuapp.com/api/chefs/${id}/recipes/`,
         newRecipe
       )
       .then(res => {
