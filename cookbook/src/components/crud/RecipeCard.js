@@ -17,6 +17,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from "@material-ui/core/Menu"
+import MenuItem from '@material-ui/core/MenuItem'
 
 
 
@@ -51,8 +53,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
 
+  // For the Settings Menu:
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // For the Expand Section
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -60,16 +73,32 @@ export default function RecipeReviewCard(props) {
   return (
     <Card className={classes.card}>
       <CardHeader
+        
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             {props.avatar}
           </Avatar>
         }
+       
         action={
-          <IconButton aria-label="settings">
+          <div>
+          <IconButton aria-label="settings" onClick={handleClick}>
             <MoreVertIcon />
           </IconButton>
+          <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Edit Post</MenuItem>
+          <MenuItem onClick={handleClose}>Delete Post</MenuItem>
+        </Menu>
+        </div>
         }
+
+        
         title={props.title}
         subheader={props.subheader}
       />
