@@ -43,11 +43,33 @@ export default function MainFeed() {
   React.useEffect(() => {
     axios.get(`https://chefbook-stacy.herokuapp.com/api/recipes`).then(res => {
       const data = res.data;
+      console.log(data);
+
       const result = data.filter(recipe =>
         recipe.title.toLowerCase().includes(query.toLowerCase())
       );
+    //   const meal = data.filter(recipe =>
+    //     recipe.meal_type.toLowerCase().includes(query.toLowerCase())
+    //   );
+      const description = data.filter(recipe =>
+        recipe.description.toLowerCase().includes(query.toLowerCase())
+      );
+      const instructions = data.filter(recipe =>
+        recipe.instructions.toLowerCase().includes(query.toLowerCase())
+      );
+    //   const chef = data.filter(recipe =>
+    //     recipe.chef_id.toLowerCase().includes(query.toLowerCase())
+    //   );
+
+
       console.log(result);
       setRecipes(result);
+    //   setRecipes(meal);
+      setRecipes(description);
+      setRecipes(instructions);
+    //   setRecipes(chef);
+
+    //   setRecipes(instructions);
     });
   }, [query]);
 
