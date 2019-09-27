@@ -170,7 +170,7 @@ const ChefPortfolio = () => {
 
               </form>
               <button type="submit" onClick={addRecipe}>Submit</button>
-      <Navigation />
+
 
                     <button type="submit" onClick={addRecipe}>Submit</button>
             
