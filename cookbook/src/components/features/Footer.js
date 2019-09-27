@@ -8,14 +8,17 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
     root: {
-      margin: 'auto',
-      width: '70%',
-      backgroundColor: theme.palette.background.paper,
+        margin: 'auto',
+        width: '70%',
+        backgroundColor: theme.palette.background.paper,
     },
     dividerFullWidth: {
         padding: '10px 0',
-      margin: `5px 0 0 ${theme.spacing(2)}px`,
+        margin: `5px 0 0 ${theme.spacing(2)}px`,
     },
+    a:{
+        color: '#A4A4A4', 
+    }
 }));
 
 export default function Footer() {
@@ -32,7 +35,7 @@ export default function Footer() {
                         display="block"
                         variant="caption"
                         >
-                        <a href="https://cook-book.netlify.com/index.html" style={{textDecoration:"none"}}>Copyright © 2019, CookBook</a>
+                        <a className={classes.a} href="https://cook-book.netlify.com/index.html" style={{textDecoration:"none"}}>Copyright © 2019, CookBook</a>
                     </Typography>
                 </li>
             </List>
