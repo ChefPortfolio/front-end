@@ -98,11 +98,11 @@ const SignIn= props => {
     axiosWithAuth()
       .post('https://chefbook-stacy.herokuapp.com/api/auth/login', user)
       .then(res => {
-        // console.log(res.data);
+        console.log('Server res',res.data);
         localStorage.setItem('token', res.data.token);
 
         //* Backend to deliver id in payload, set local id to storage */
-        localStorage.setItem('chef_id', res.data.id);
+        localStorage.setItem('chef_id', '3');
         props.history.push('/chefportfolio');
       })
       .catch(err => {

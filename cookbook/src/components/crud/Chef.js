@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import axios from 'axios';
 
 // Material UI
 import ChatIcon from '../logos/ChatIcon';
@@ -64,19 +66,32 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Chef = props => {
+  
   const classes = useStyles();
+
+  const [chef, setChef] = useState({});
+  console.log('Chef', chef);
+  useEffect(() => {
+    axios.get(`https://chefbook-stacy.herokuapp.com/api/chefs`)
+      .then(res => {
+        // console.log('Chef GET res', res.data[2])
+        setChef(res.data[2]);
+      })
+      .catch(err => console.log('Error in chef GET res', err.response))
+  }, [])
+
   return (
     <>
       <Grid container className={classes.root} justify="center">
         {console.log('Checking props', props)}
         <Grid item className={classes.gridItem} s>
-          <div className={classes.avatar}>{props.chef.avatar_url}</div>
+          <div className={classes.avatar}><img src={chef.avatar_url} width="200" height="225" /></div>
         </Grid>
         <div className={classes.rowContainer}>
           <Grid item className={classes.gridItem} s>
             <div className={classes.topRow}>
               <div className={classes.name}>
-                {props.chef.first_name} {props.chef.last_name}
+                {chef.first_name} {chef.last_name}
               </div>
               <div className={classes.chat}>
                 <ChatIcon />
@@ -88,9 +103,9 @@ const Chef = props => {
           </Grid>
           <Grid item className={classes.gridItem} s>
             <div className={classes.bottomRow}>
-              <div className={classes.username}>{props.chef.username}</div>
-              <div className={classes.contact}>{props.chef.contact}</div>
-              <div className={classes.location}>{props.chef.location}</div>
+              <div className={classes.username}>{chef.username}</div>
+              <div className={classes.contact}>{chef.contact}</div>
+              <div className={classes.location}>{chef.location}</div>
             </div>
           </Grid>
         </div>

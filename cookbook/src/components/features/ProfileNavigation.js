@@ -7,7 +7,6 @@ import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogoGrey from '../logos/NavLogoGrey';
 import { Link as RouterLink } from 'react-router-dom';
-import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({

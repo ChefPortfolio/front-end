@@ -1,6 +1,10 @@
 ///* RECIPE CARD IS POSTCARD.JS, Need to bring everything together */
 
 import React from 'react';
+import { axiosWithAuth } from './utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
+
+//Material-UI
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -65,11 +69,29 @@ export default function RecipeReviewCard(props) {
     setAnchorEl(null);
   };
 
+  const setRecipeToEdit = () => {
+    localStorage.setItem('Recipe to edit', props.recipeId)
+  }
+
   // For the Expand Section
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const handleDelete = e => {
+    //This is where the DELETE request to delete your post
+
+    const id = props.recipeId
+
+    axiosWithAuth().delete(`https://chefbook-stacy.herokuapp.com/api/recipes/${id}`)
+    .then(res => {
+      console.log('YAY DELETE res', res)
+        // updateRecipes(recipes.filter(rec => res.data !==rec.id))
+    })
+    .catch(err => {
+        console.log('Error in DELETE', err.response)
+    });
+  }
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -92,8 +114,11 @@ export default function RecipeReviewCard(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Edit Post</MenuItem>
-          <MenuItem onClick={handleClose}>Delete Post</MenuItem>
+          {/* <MenuItem onClick={handleClose}>Edit Post</MenuItem>
+          <MenuItem onClick={handleClose}>Delete Post</MenuItem> */}
+          <MenuItem onClick={setRecipeToEdit}><Link to='/editrecipe'> Edit Recipe </Link></MenuItem>
+          <MenuItem onClick={handleDelete}>Delete Post</MenuItem>
+          {console.log('Props', props)}
         </Menu>
         </div>
         }

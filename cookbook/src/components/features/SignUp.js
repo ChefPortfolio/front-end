@@ -74,7 +74,8 @@ const SignUp = props => {
     last_name: '',
     username: '',
     email_address: '',
-    password: ''
+    password: '',
+    id: 7
   });
 
   const handleChanges = e => {

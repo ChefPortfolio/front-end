@@ -5,8 +5,9 @@ import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogoGrey from '../logos/NavLogoGrey';
 import { Link as RouterLink } from 'react-router-dom';
-import { axiosWithAuth } from '../crud/utils/axiosWithAuth';
-import axios from 'axios'
+
+//Import PrivateRoute
+import PrivateRoute from '../crud/PrivateRoute';
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -53,7 +54,9 @@ export default function Navigation() {
           <div className={classes.links}>
               <RouterLink to="/sign-in" color="inherit" className={classes.btn}>Sign In</RouterLink>
               <RouterLink to="/sign-up" color="inherit" className={classes.btn}>Sign Up</RouterLink>
-              <RouterLink to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</RouterLink>
+
+              {/* This needs to stay a Private Route */} 
+              <PrivateRoute to='/chefportfolio' color="inherit" className={classes.btn}>Portfolio</PrivateRoute>
           </div>
         </Toolbar>
       </AppBar>
