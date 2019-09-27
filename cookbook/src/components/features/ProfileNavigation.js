@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import TextField from '@material-ui/core/TextField';
-import SearchIcon from '@material-ui/icons/Search';
+
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import NavLogoGrey from '../logos/NavLogoGrey';
@@ -72,18 +71,6 @@ export default function Navigation() {
           <Link component={HomeLink}>
             <NavLogoGrey />
           </Link>
-          <form className={classes.container} noValidate autoComplete="off">
-            
-            <TextField
-              id="standard-search"
-              label={<SearchIcon></SearchIcon>}
-              type="search"
-              onChange={handleInputChange}
-              value={query}
-              className={classes.textField}
-              margin="normal"
-            />
-          </form>
           <div className={classes.links}>
               <a href="#" className={classes.btn}>Sign Out</a>
           </div>
